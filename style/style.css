@@ -1,0 +1,249 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smothing: antialised;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+    font-size: 62.5%;
+    --hue: 240;
+    --color-base-gray-100: hsl(0, 0%, 96%);
+    --color-base-white: hsl(0, 0%, 100%);
+    --color-base-gray-200: hsl(var(--hue), 60%, 58%);
+    --color-base-gray-500: #3d3d3d;
+    --color-base-gray-900: hsl(var(--hue), 60%, 30%);
+    --color-base-blue-100: hsl(195, 91%, 25%);
+    --color-base-blue-200: hsl(195, 46%, 40%);
+
+}
+
+html, body, input {
+    font-family: 'Mulish', sans-serif;
+}
+
+body {
+    font-size: 1.6rem;
+    background-color: var(--color-base-white);
+    color: var(--color-base-gray-500);
+}
+
+#app {
+    display: grid;
+    grid-template-rows: max-content 1fr max-content;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    padding: 1.6rem 2.2rem;
+    margin: 0 auto;
+}
+
+.thumb img {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+    width: 100%;
+}
+
+main {
+    background-color: var(--color-base-gray-100);
+    overflow-y: scroll;
+    width: 100vw;
+}
+
+header,
+nav {
+    display: flex;
+    align-items: center;
+    gap: 2.6rem;
+    font-weight: 700;
+    background-color: var(--color-base-blue-100);
+}
+
+header form {
+    flex: 1;
+}
+
+.input-wrapper label{
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 1.6rem;
+
+    background-color: var(--color-base-blue-200);
+    border: 0;
+    border-radius: .6rem;
+
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.input-wrapper input::placeholder {
+    color: var(--color-base-white);
+}
+
+.avatar {
+    width: 4.2rem;
+    height: 4.2rem;
+
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+main h1 {
+    font-size: 2.4rem;
+}
+
+.article > div {
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+    margin-bottom: 3rem;
+}
+
+.article p {
+    margin-bottom: 3.4rem;
+}
+.like-button-container {
+    display: flex;
+    gap: 1.2rem;
+}
+
+.like-button-container img:last-child {
+    transform: rotateX(180deg);
+    
+}
+
+.relacionated-articles {
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+}
+
+.item {
+    display: flex;
+    gap: 1.6rem;
+    max-height: 8.5rem;
+}
+
+.item img {
+    width: 15rem;
+    aspect-ratio: 151/84; /*proporção da imagem largura / altura*/
+    object-fit: cover;
+    border-radius: .8rem;
+    transition: all 200ms ease-out;
+    display: block;
+}
+
+.item img:hover {
+    filter: hue-rotate(7deg) contrast(101%) saturate(200%);
+    transform: scale(1.1) rotate(-2deg);
+}
+
+.details {
+    max-width: 21.5rem;
+}
+
+.details h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.details p { 
+    font-size: 1.2rem;
+}
+
+footer p {
+    text-align: center;
+    padding: 1.6rem;
+    font-weight: 600;
+    color: var(--color-base-white);
+}
+
+header {
+    --startY: -100%;
+    animation: move .2s;
+}
+
+footer {
+    --startY: 100%;
+    animation: move .2s;
+    background-color: var(--color-base-blue-200);
+}
+
+@keyframes move {
+    from {
+        transform: translateY(var(--startY));
+    }
+}
+
+.item {
+    --delay: .4s;
+    animation: appear .4s var(--delay) backwards;
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    
+    .container {
+        padding: 1.6rem 11rem;
+    }
+    .thumb {
+        padding: 1.6rem 3.5rem 0 11rem;
+        
+    }
+
+    .thumb img {
+        border-radius: .8rem;
+        aspect-ratio: 8/4;
+    }
+
+    main {
+        display: grid;
+        grid-template-columns: 60% 40%;
+        position: relative;
+    }
+
+    main .container {
+        grid-column: 1;
+        padding-top: 3rem;
+        padding-right: 3.5rem;
+    }
+
+    .relacionated-articles {
+        grid-column: 2;
+        margin-top: 1.6rem;
+        position: absolute;
+        top: 0;
+        
+    }
+
+    .article > div {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .article p {
+        line-height: 160%;
+    }
+
+}
